@@ -9,7 +9,8 @@ $(document).ready(function(){
     var indicator = $('.collecting');
 
     var collection = [];
-    var timerId;
+    var timerId,
+        normalizer;
 
     btnClear.click(function(){
         if(collection.length === 0){
@@ -69,10 +70,25 @@ $(document).ready(function(){
     };
 
     function getPosition(position){
+        /*
+        if(collection.length === 0){
+            // Set normalizer
+            normalizer = {
+                latitude: position.coords.latitude.toFixed(2),
+                longitude: position.coords.longitude.toFixed(2),
+            };
+        }
+        position.coords.latitude = normalizer.latitude - position.coords.latitude;
+        position.coords.longitude = normalizer.longitude - position.coords.longitude;
+        */
+
         collection.push(position);
-        dom.append("<li>("+position.coords.latitude+", "+position.coords.longitude+")</li>");
+        dom.append("<li>{'x':"+position.coords.longitude.toFixed(7)+", 'y':"+position.coords.latitude.toFixed(7)+"},</li>");
     }
 });
+
+function normalize(){
+};
 
 function disable(element){
     element.prop("disabled", true);
