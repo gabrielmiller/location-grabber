@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Location grabber</title>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="poop.js"></script>
+    <style>
+        .box-group    { display: inline-block; vertical-align: top; padding: 8px;}
+        .header { text-transform: uppercase; color: #ccc; display: block; }
+        .box    { border: 1px dashed #999; padding: 8px; }
+        .collecting { display: inline-block; padding: 4px; margin: 4px; visibility: hidden; background-color:#c66; color: white; text-transform: uppercase; font-weight: bold; }
+        .collecting.on { visibility: visible; }
+        #graph  { height: 100px; width: 100px; background-color: #6ca; }
+    </style>
+</head>
+<body>
+    <h1>Location grabber</h1>
+    <div>
+        <div class="box-group">
+            <div id="controls" class="box">
+                <span class="header">Data collection controls</span>
+                <div>
+                    <span>Record a point every</span>
+                    <input id="interval" type="text" value="1">
+                    <span>seconds</span>
+                </div>
+                <div>
+                    <button>Clear</button>
+                    <button>Start</button>
+                    <button disabled="disabled">Stop</button>
+                    <div class="collecting">
+                        <span>Collecting data</span>
+                    </div>
+                </div>
+            </div>
+            <div id="graph">
+                <span>Visualization</span>
+            </div>
+        </div>
+        <div class="box-group">
+            <div id="readout" class="box">
+                <span class="header">Data readout</span>
+                <span id="data-placeholder">No data has been collected.</span>
+                <ol>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
