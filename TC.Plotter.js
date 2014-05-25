@@ -16,6 +16,7 @@ TC.Plotter.Points = [
 TC.Plotter.$Svg = $('#plot');
 
 TC.Plotter.Draw = function TC_Plotter_Draw(){
+    TC.Plotter.Clear();
     var
         points = TC.Plotter.ReducedPoints();
     var
@@ -68,6 +69,13 @@ TC.Plotter.ReducedPoints = function TC_Plotter_ReducedPoints(){
         {x:22, y:-3},
         {x:20, y:-7},
     ];
+}
+
+TC.Plotter.Clear = function TC_Plotter_Clear(){
+    var svg = TC.Plotter.$Svg.get(0);
+    while (svg.firstChild) {
+        svg.removeChild(svg.firstChild);
+    }
 }
 
 TC.Plotter.Draw();
