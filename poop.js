@@ -13,9 +13,6 @@ $(document).ready(function(){
         normalizer;
 
     btnClear.click(function(){
-        if(collection.length === 0){
-            return;
-        }
         var isCleared = confirm("Are you sure you want to clear your data?");
         if(!isCleared){
             return;
