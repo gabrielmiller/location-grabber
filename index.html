@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Location grabber</title>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="poop.js"></script>
     <style>
         .box-group    { display: inline-block; vertical-align: top; padding: 8px;}
@@ -10,7 +10,13 @@
         .collecting { display: inline-block; padding: 4px; margin: 4px; visibility: hidden; background-color:#c66; color: white; text-transform: uppercase; font-weight: bold; }
         .collecting.on { visibility: visible; }
         #graph  { height: 100px; width: 100px; background-color: #6ca; }
+        line { /* Line in SVG plotter */
+            stroke:rgb(0,0,0);
+            stroke-width:1;
+        }
     </style>
+</style>
+
 </head>
 <body>
     <h1>Location grabber</h1>
@@ -33,7 +39,7 @@
                 </div>
             </div>
             <div id="graph">
-                <span>Visualization</span>
+                <svg id="plot" width="480" height="320" style="background-color:#ccc;" version="1.1" xmlns="http://www.w3.org/2000/svg"></svg>
             </div>
         </div>
         <div class="box-group">
@@ -46,4 +52,6 @@
         </div>
     </div>
 </body>
+
+<script type="text/javascript" src="TC.Plotter.js"></script>
 </html>
