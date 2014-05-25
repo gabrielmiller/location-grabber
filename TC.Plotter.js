@@ -73,7 +73,7 @@ TC.Plotter.Points = [
 TC.Plotter.$Svg = $('#plot');
 
 TC.Plotter.Draw = function TC_Plotter_Draw(){
-    TC.Plotter.Clear();
+    TC.Plotter.ClearDisplay();
     var
         points = TC.Plotter.ReducedPoints();
     var
@@ -99,10 +99,10 @@ TC.Plotter.Draw = function TC_Plotter_Draw(){
         TC.Plotter.DrawLine(p1,p2);
     }
 
-xMin-=10;
-yMin-=10;
-xMax+=10;
-yMax+=10;
+xMin-=1;
+yMin-=1;
+xMax+=1;
+yMax+=1;
 
     // Show just area that has details
     var viewBox = xMin+" "+yMin+" "+Math.abs(xMax-xMin)+" "+Math.abs(yMax-yMin);
@@ -120,36 +120,25 @@ TC.Plotter.DrawLine = function TC_Plotter_DrawLine(p1, p2){
 }
 
 TC.Plotter.ReducedPoints = function TC_Plotter_ReducedPoints(){
-/*
     var 
         points = TC.Plotter.Points,
         results = [];
 
     var firstPoint = points[0];
     var xReduce = Math.round(firstPoint.x * 10000) / 10000;
-    console.log("xReduce: "+xReduce);
+    var yReduce = Math.round(firstPoint.y * 10000) / 10000;
 
     for(var i in points){
         var p = points[i];
-        var x = p.x;
-        var y = p.y;
-
+        var x = (p.x - xReduce)*10000*100;
+        var y = (p.y - yReduce)*10000*100;
         results.push({x:x,y:y});
     }
 
-    return results;*/
-///*
-    return [
-        {x:0, y:0},
-        {x:10, y:5},
-        {x:15, y:1},
-        {x:22, y:-3},
-        {x:20, y:-7},
-    ];
-//*/
+    return results;
 }
 
-TC.Plotter.Clear = function TC_Plotter_Clear(){
+TC.Plotter.ClearDisplay = function TC_Plotter_ClearDisplay(){
     var svg = TC.Plotter.$Svg.get(0);
     while (svg.firstChild) {
         svg.removeChild(svg.firstChild);

@@ -23,6 +23,9 @@ $(document).ready(function(){
         placeholder.text("No data has been collected.");
         collection = [];
         dom.empty();
+
+        TC.Plotter.Points = [];
+        TC.Plotter.ClearDisplay();
     });
 
     btnStart.click(function(){
@@ -84,6 +87,11 @@ $(document).ready(function(){
 
         collection.push(position);
         dom.append("<li>{'x':"+position.coords.longitude.toFixed(7)+", 'y':"+position.coords.latitude.toFixed(7)+"},</li>");
+        TC.Plotter.Points.push({
+            x:position.coords.longitude.toFixed(7),
+            y:position.coords.latitude.toFixed(7)
+        });
+        TC.Plotter.Draw();
     }
 });
 
